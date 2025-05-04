@@ -1540,7 +1540,7 @@ in_right_subtree(node_t *rc, node_t *n)
 void
 dynamic_resize(node_t *n, resize_t t)
 {
-	const int16_t step = 5;
+	const int16_t step = 15;
 	if (n == NULL || n->parent == NULL || IS_ROOT(n)) {
 		return;
 	}

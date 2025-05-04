@@ -900,7 +900,7 @@ grow_floating_window(arg_t *arg)
 	if (n->client && n->client->state != FLOATING)
 		return 0;
 
-	const uint16_t	   step		  = 10;
+	const uint16_t	   step		  = 30;
 	const resize_dir_t resize_dir = arg->rd;
 	const uint16_t	   max_dim	  = (resize_dir == HORIZONTAL_DIR)
 										? curr_monitor->rectangle.width
@@ -939,15 +939,15 @@ shrink_floating_window(arg_t *arg)
 
 	if (n->client && n->client->state != FLOATING)
 		return 0;
-	const uint16_t	   step		  = 10;
+	const uint16_t	   step		  = 30;
 	const resize_dir_t resize_dir = arg->rd;
-	const uint16_t	   min_dim	  = step * 40;
+	// const uint16_t	   min_dim	  = step * 40;
 	uint16_t		  *dim		  = (resize_dir == HORIZONTAL_DIR)
 										? &n->floating_rectangle.width
 										: &n->floating_rectangle.height;
 	int16_t *pos = (resize_dir == HORIZONTAL_DIR) ? &n->floating_rectangle.x
 												  : &n->floating_rectangle.y;
-	if (*dim - (step * 2) < min_dim) {
+	if (*dim < 300) {
 		return 0;
 	}
 	*dim -= (step * 2);
@@ -975,7 +975,7 @@ resize_floating_window(arg_t *arg)
 	if (n->client && n->client->state != FLOATING)
 		return 0;
 
-	const uint16_t	   step			 = 10;
+	const uint16_t	   step			 = 30;
 	const resize_t	   resize_type	 = arg->r;
 	const resize_dir_t resize_dir	 = arg->rd;
 	int16_t			   delta		 = (resize_type == GROW ? step : -step);
@@ -1011,7 +1011,7 @@ shift_floating_window(arg_t *arg)
 	if (n->client && n->client->state != FLOATING)
 		return 0;
 
-	const int16_t	   step			= 10;
+	const int16_t	   step			= 30;
 	rectangle_t		  *rect			= &n->floating_rectangle;
 	const rectangle_t *monitor_rect = &curr_monitor->rectangle;
 	const direction_t  dir			= arg->d;
