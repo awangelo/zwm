@@ -1024,7 +1024,7 @@ shift_floating_window(arg_t *arg)
 	case NONE: return 0;
 	}
 
-	if (rect->x < monitor_rect->x) {
+		/*if (rect->x < monitor_rect->x) {
 		rect->x = monitor_rect->x;
 		return 0;
 	}
@@ -1039,7 +1039,7 @@ shift_floating_window(arg_t *arg)
 	if (rect->y + rect->height > monitor_rect->y + monitor_rect->height) {
 		rect->y = monitor_rect->y + monitor_rect->height - rect->height;
 		return 0;
-	}
+	} */
 
 	grab_pointer(wm->root_window, false);
 	if (move_window(n->client->window, rect->x, rect->y) != 0) {
